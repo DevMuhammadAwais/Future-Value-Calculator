@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="description" content="The future value calculator is a valuable tool that helps individuals and businesses to make informed financial decisions by calculating the value of an investment at a future date. This calculator takes into account the initial investment amount, the interest rate, and the time period for the investment. By inputting these variables, users can determine the future value of their investment, allowing them to plan and strategize for their financial future. This tool is particularly useful for individuals who are saving for retirement, planning for major purchases, or investing in long-term financial goals. Overall, the future value calculator is an essential resource for anyone looking to make sound financial decisions and maximize their investment potential.">
+  <meta name="keywords" content="Future Value Calculator">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Future Value Calculat</title>
+  <style>
+    /* General styles */
+.calculator-box__main {
+      background: #fff;
+      box-shadow: 0 3px 6px rgba(0,0,0,.3);
+      width: 100%;
+      border-radius: 0.6em;
+      padding: 2em;
+      box-sizing: border-box;
+      color: #000;
+    }
+
+.calculator-box {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+.calculator-operation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+     #adittion_calculator .calculator-operation__left,
+     #adittion_calculator .calculator-operation__right {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+.app-font.calculator-text.calculator-text--large {
+      font-size: 1.3em;
+      padding: 0 0.3em;
+      margin: 0;
+    }
+
+.calculator-input {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      flex: 0 0 calc(33.33% - 10px); /* 33.33% width for each input field on larger screens */
+    }
+
+.calculator-box__main input {
+     text-align: center;
+    background: #efeff5;
+    border: 0;
+    outline: 0;
+    border-radius: 0.4em;
+    font-size: 1.4em;
+    font-weight: 300;
+    padding: 0.6em;
+    width: 5em;
+    -moz-appearance: textfield;
+}
+
+.calculator-operation__right {
+    text-align: end !important;
+}
+
+.calculator-button {
+      padding: 10px 20px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .calculator-button:hover {
+            background-color: #EFEFF5;
+            color: #000000;
+        }
+
+        .calculator-button:focus {
+            outline: none;
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+  </style>
+</head>
+<body>
+  <div class="calculator-box">
+    <div class="calculator-box__main">
+      <div class="calculator-operation">
+        <div class="calculator-operation__left">
+          <div slot="left">
+            <div class="app-font calculator-text calculator-text--large">What is Present Value</div>
+          </div>
+          <div class="calculator-input"><input class="input-A" placeholder="Value" type="number" value=""></div>
+          <div class="app-font calculator-text calculator-text--large">Interest Rate(%)</div>
+          <div class="calculator-input"><input class="input-B" placeholder="Interest %" type="number" value=""></div>
+          <div class="app-font calculator-text calculator-text--large">Number Of Periods</div>
+          <div class="calculator-input"><input class="input-C" placeholder="Period" type="number" value=""></div>
+          <div class="app-font calculator-text calculator-text--large">?</div>
+        </div>
+        <div class="calculator-operation__right">
+          <div slot="right">
+            <button class="calculator-button calculator-button-success" onclick="calculateFutureValue()">Calculate</button>
+            <div>
+              <div class="app-font calculator-text calculator-text--small">(result)</div>
+            </div>
+            <div>
+              <div class="app-font calculator-text calculator-text--large">=</div>
+              <div class="calculator-input"><input class="input-D" placeholder="FV" type="number" value="" disabled></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="calculator-box__history"></div>
+  </div>
+
+  <script>
+  function calculateFutureValue() {
+      // Corrected variable names for clarity
+      const presentValue = parseFloat(document.querySelector('.input-A').value) || 0;
+      const interestRate = parseFloat(document.querySelector('.input-B').value) / 100 || 0;
+      const numberOfPeriods = parseFloat(document.querySelector('.input-C').value) || 0;
+
+      // Future Value (FV) calculation formula
+      const futureValue = presentValue * Math.pow((1 + interestRate), numberOfPeriods);
+
+      // Display the result, rounded to two decimal places
+      document.querySelector('.input-D').value = futureValue.toFixed(2);
+    }
+  </script>
+</body>
+</html>
